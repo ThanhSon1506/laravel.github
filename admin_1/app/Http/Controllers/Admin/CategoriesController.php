@@ -88,6 +88,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->route('home.categories.index');
     }
 }

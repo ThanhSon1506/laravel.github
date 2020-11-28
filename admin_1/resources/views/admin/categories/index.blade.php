@@ -32,9 +32,9 @@
     			<tr>
     				<td>{{$value->id}}</td>
     				<td>{{$value->title}}</td>
-    				<td><a href="{{route('home.categories.edit',$value->id)}}" class="btn btn-	">Edit</a>
-						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').sumbit()" class="btn btn-secondary">Delete</a>
-						 <form action="{{route('admin.categories.destroy',$value->id )}}" method="post">
+    				<td><a href="{{route('home.categories.edit',$value->id)}}" class="btn btn-success">Edit</a>
+						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-secondary">Delete</a>
+						 <form action="{{route('home.categories.destroy',$value->id )}}" method="post">
 						 	@method('DELETE')
 							 <input type="hidden" name="_token" value="{{csrf_token()}}">
 						 </form>
