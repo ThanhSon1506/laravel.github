@@ -191,7 +191,15 @@
             <a href="{{route('home.categories.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Category
+                Thể loại
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('home.vungmien.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-chart-area"></i>
+              <p>
+                Vùng miền
               </p>
             </a>
           </li>

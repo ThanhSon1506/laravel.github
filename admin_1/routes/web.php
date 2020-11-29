@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home','HomeController@index')->name('home');
 Route::get('/home/categories','CategoryController@index')->name('list_category');
 Route::resource('/home/categories','Admin\CategoriesController',['as'=>'home']);
+Route::resource('/home/vungmien','Admin\VungmienController',['as'=>'home']);
