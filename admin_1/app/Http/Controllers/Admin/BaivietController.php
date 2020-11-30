@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Vungmiens;
-use App\Baiviet;
+use App\Baiviets;
 class BaivietController extends Controller
 {
     public function __construct(){
@@ -19,7 +19,7 @@ class BaivietController extends Controller
      */
     public function index()
     {
-        $arr['baiviet']=Baiviet::all();
+        $arr['baiviet']=Baiviets::all();
         return view('admin.baiviet.index')->with($arr);
     }
 

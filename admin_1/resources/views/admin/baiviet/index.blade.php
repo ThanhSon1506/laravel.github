@@ -25,14 +25,26 @@
     		<table class="table table-bordered table-striped">
     			<tr>
     				<th>ID</th>
-    				<th>Titel</th>
+    				<th>Ten</th>
+					<th>Id_ChuDe</th>
+					<th>Id_VungMien</th>
+					<th>NguyenLieu</th>
+					<th>SoChe</th>
+					<th>ThucHien</th>
+					<th>CachDung</th>
     				<th>Action</th>
     			</tr>
                 @if(count($baiviet))
     			@foreach($baiviet as $value)
     			<tr>
     				<td>{{$value->id}}</td>
-    				<td>{{$value->title}}</td>
+					<td>{{$value->ten}}</td>
+					<td>{{$value->chude_id}}</td>
+					<td>{{$value->vungmien_id}}</td>
+					<td>{{$value->nguyenlieu}}</td>
+					<td>{{$value->soche}}</td>
+					<td>{{$value->thuchien}}</td>
+					<td>{{$value->cachdung}}</td>
     				<td><a href="{{route('home.baiviet.edit',$value->id)}}" class="btn btn-success">Edit</a>
 						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-secondary">Delete</a>
 						 <form action="{{route('home.baiviet.destroy',$value->id )}}" method="post">
@@ -43,7 +55,7 @@
     			</tr>
     			@endforeach
                 @else
-                <tr><td colspan="3">Không tìm thấy bài viết </td></tr>
+                <tr><td colspan="10">Không tìm thấy bài viết </td></tr>
                 @endif
     		</table>
     		
