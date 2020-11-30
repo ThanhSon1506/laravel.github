@@ -4,21 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Category;
 use App\Vungmiens;
-class VungmienController extends Controller
+use App\Baiviet;
+class BaivietController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $arr['vungmien']=Vungmiens::all();
-        return view('admin.vungmien.index')->with($arr);
+        $arr['baiviet']=Baiviet::all();
+        return view('admin.baiviet.index')->with($arr);
     }
 
     /**
@@ -28,7 +30,7 @@ class VungmienController extends Controller
      */
     public function create()
     {
-        return view('admin.vungmien.create');
+        //
     }
 
     /**
@@ -37,11 +39,9 @@ class VungmienController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Vungmiens $vungmien)
+    public function store(Request $request)
     {
-        $vungmien->title=$request->title;
-        $vungmien->save();
-        return redirect()->route('home.vungmien.index');
+        //
     }
 
     /**
@@ -61,10 +61,9 @@ class VungmienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vungmiens $vungmien)
+    public function edit($id)
     {
-        $arr['vungmien']=$vungmien;
-        return view('admin.vungmien.edit')->with($arr);
+        //
     }
 
     /**
@@ -74,11 +73,9 @@ class VungmienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vungmiens $vungmien)
+    public function update(Request $request, $id)
     {
-        $vungmien->title=$request->title;
-        $vungmien->save();
-        return redirect()->route('home.vungmien.index');
+        //
     }
 
     /**
@@ -89,7 +86,6 @@ class VungmienController extends Controller
      */
     public function destroy($id)
     {
-        Vungmiens::destroy($id);
-        return redirect()->route('home.vungmien.index');
+        //
     }
 }

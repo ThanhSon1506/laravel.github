@@ -18,13 +18,13 @@
 
 <section class="content">
 	<div class="container-fluid">
-		<form method="post" action="{{route('home.Vungmien.update',$Vungmien->id)}}">
+		<form method="post" action="{{route('home.vungmien.update',$vungmien->id)}}">
 		@method('PUT')
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Title</label>
-					<div class="col-md-6"><input type="text" name="title" class="form-control" value="{{$Vungmien->title}}"></div>
+					<div class="col-md-6"><input type="text" name="title" class="form-control" value="{{$vungmien->title}}"></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>

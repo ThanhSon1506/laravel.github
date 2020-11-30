@@ -179,8 +179,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <?php 
+                $segment=Request::segment(2);
+               // echo $segment;
+               ?>
           <li class="nav-item">
-            <a href="{{route('home')}}" class="nav-link active">
+            <a href="{{route('home')}}" class="nav-link 
+            @if(!$segment)
+            active
+            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -188,7 +196,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('home.categories.index')}}" class="nav-link">
+            <a href="{{route('home.categories.index')}}" class="nav-link
+            @if($segment=='categories')
+            active
+            @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Thể loại
@@ -196,7 +207,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('home.vungmien.index')}}" class="nav-link">
+            <a href="{{route('home.vungmien.index')}}" class="nav-link
+            @if($segment=='vungmien')
+            active
+            @endif
+            ">
               <i class="nav-icon fas fa-chart-area"></i>
               <p>
                 Vùng miền
@@ -204,10 +219,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('home.baiviet.index')}}" class="nav-link 
+            @if($segment=='baiviet')
+            active
+            @endif">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                News
+                Bài viết
               </p>
             </a>
           </li>
