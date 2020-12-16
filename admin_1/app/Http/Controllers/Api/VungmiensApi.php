@@ -1,26 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Vungmiens;
 use Validator;
-class CategoriesController extends Controller
+class VungmiensApi extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $arr['categories']=Category::all();
-        return view('admin.categories.index')->with($arr);
+        return response()->json(Vungmiens::get(),200);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +25,11 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $vungmien=Vungmiens::find($id);
+        if(is_null($vungmien)){
+            return response()->json(["messge"=>"Record not found"],404);
+        }
+        return response()->json($vungmien,200);
     }
 
     /**
@@ -37,16 +38,15 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Category $category)
+    public function store(Request $request)
     {
-        $rule=['title'=>'required|min:3',];
+        $rule=['title'=>'required|min:3'];
         $validator=Validator::make($request->all(),$rule);
         if($validator->fails()){
-        return redirect()->route('home.categories.create');
-    }
-        $category->title=$request->title;
-        $category->save();
-        return redirect()->route('home.categories.index');
+            return response()->json($validator->errors(),400);
+        }
+        $vungmien = Vungmiens::create($request->all());
+        return response()->json($category,201);
     }
 
     /**
@@ -66,10 +66,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        $arr['category']=$category;
-        return view('admin.categories.edit')->with($arr);
+        //
     }
 
     /**
@@ -79,16 +78,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Category $category)
+    public function update(Request $request, $id)
     {
-        $rule=['title'=>'required|min:3',];
-        $validator=Validator::make($request->all(),$rule);
-        if($validator->fails()){
-        return redirect()->route('home.categories.create');
+        $vungmien=Vungmiens::find($id);
+        if(is_null($vungmien)){                                                                          
+            return response()->json(["messge"=>"Record not found"],404);
         }
-        $category->title=$request->title;
-        $category->save();
-        return redirect()->route('home.categories.index');
+        $category->update($request->all());
+        return response()->json($category,200);
     }
 
     /**
@@ -99,7 +96,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('home.categories.index');
+        $vungmien=Vungmiens::find($id);
+        if(is_null($vungmien)){                                                                          
+            return response()->json(["messge"=>"Record not found"],404);
+        }
+        $vungmien->delete();
+        return response()->json(null,204);
     }
 }

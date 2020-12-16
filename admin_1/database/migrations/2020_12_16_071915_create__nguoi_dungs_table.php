@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Vungmiens extends Migration
+class CreateNguoiDungsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class Vungmiens extends Migration
      */
     public function up()
     {
-        Schema::create('vungmiens', function (Blueprint $table) {
+        Schema::create('_nguoi_dungs', function (Blueprint $table) {
             $table->id();
-            $table->string('ten_vungmien');
-            $table->Integer('action')->default(1);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class Vungmiens extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vungmiens');
+        Schema::dropIfExists('_nguoi_dungs');
     }
 }

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
-use Validator;
-class CategoriesController extends Controller
+
+class NguoidungController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,9 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-        $arr['categories']=Category::all();
-        return view('admin.categories.index')->with($arr);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        //
     }
 
     /**
@@ -37,16 +36,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Category $category)
+    public function store(Request $request)
     {
-        $rule=['title'=>'required|min:3',];
-        $validator=Validator::make($request->all(),$rule);
-        if($validator->fails()){
-        return redirect()->route('home.categories.create');
-    }
-        $category->title=$request->title;
-        $category->save();
-        return redirect()->route('home.categories.index');
+        //
     }
 
     /**
@@ -66,10 +58,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        $arr['category']=$category;
-        return view('admin.categories.edit')->with($arr);
+        //
     }
 
     /**
@@ -79,16 +70,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Category $category)
+    public function update(Request $request, $id)
     {
-        $rule=['title'=>'required|min:3',];
-        $validator=Validator::make($request->all(),$rule);
-        if($validator->fails()){
-        return redirect()->route('home.categories.create');
-        }
-        $category->title=$request->title;
-        $category->save();
-        return redirect()->route('home.categories.index');
+        //
     }
 
     /**
@@ -99,7 +83,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('home.categories.index');
+        //
     }
 }

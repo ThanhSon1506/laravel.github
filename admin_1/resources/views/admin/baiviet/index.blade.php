@@ -26,8 +26,9 @@
     			<tr>
     				<th>ID</th>
     				<th>Ten</th>
-					<th>Id_ChuDe</th>
-					<th>Id_VungMien</th>
+					<th>HinhAnh</th>
+					<th>ChuDe</th>
+					<th>VungMien</th>
 					<th>NguyenLieu</th>
 					<th>SoChe</th>
 					<th>ThucHien</th>
@@ -39,8 +40,9 @@
     			<tr>
     				<td>{{$value->id}}</td>
 					<td>{{$value->ten}}</td>
-					<td>{{$value->chude_id}}</td>
-					<td>{{$value->vungmien_id}}</td>
+					<td><img src="{{asset('storage/baiviet/'.$value->hinhanh)}}" style="width:150px"></td>
+					<td>{{$value->category->title}}</td>
+					<td>{{$value->vungmiens->ten_vungmien}}</td>
 					<td>{{$value->nguyenlieu}}</td>
 					<td>{{$value->soche}}</td>
 					<td>{{$value->thuchien}}</td>

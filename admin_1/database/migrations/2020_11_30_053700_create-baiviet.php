@@ -16,12 +16,10 @@ class CreateBaiviet extends Migration
         Schema::create('baiviets', function (Blueprint $table) {
             $table->id();   
             $table->string('ten');
-            $table->Integer('chude_id');
-            $table->Integer('vungmien_id');
-            $table->string('nguyenlieu');
-            $table->string('soche');
-            $table->string('thuchien');
-            $table->string('cachdung');
+            $table->text('nguyenlieu');
+            $table->text('soche');
+            $table->text('thuchien');
+            $table->text('cachdung');
             $table->Integer('action')->default(1);
             $table->timestamps();
         });
